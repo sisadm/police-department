@@ -8,9 +8,11 @@ from .models import User
 class CustomUserAdmin(UserAdmin):
     model = User
     list_display = ['id', 'username', 'email', 'role']
-    search_fields = ['id', 'username', 'email']
-    list_filter = ['role', 'is_staff']
+    search_fields = ['id', 'username', 'email', 'role']
+    list_filter = ['role', 'is_staff', 'is_active', 'date_joined']
+    readonly_fields = ['last_login', 'date_joined']
     ordering = ['id']
+
 
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password', 'role')}),
