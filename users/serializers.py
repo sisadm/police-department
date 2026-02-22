@@ -3,7 +3,7 @@ from .models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserRegSerializer(serializers.ModelSerializer):
 
     username = serializers.RegexField(regex=r'^[A-Za-z][A-Za-z0-9._]*$',)
     email = serializers.EmailField()

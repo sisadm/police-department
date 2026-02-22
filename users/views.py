@@ -7,19 +7,17 @@ from rest_framework import authentication, status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from users.serializers import UserSerializer
+from users.serializers import UserRegSerializer
 
 
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def UserView(request):
 
-    if request.method == 'GET':
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
+
 
 
     if request.method == 'POST':
-        serializer = UserSerializer(data=request.data)
+        serializer = UserRegSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
